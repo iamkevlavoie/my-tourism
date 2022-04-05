@@ -1,0 +1,59 @@
+<h1>Innovative Ideas</h1>
+
+<form [formGroup]="techform">
+    <div>
+        <label for="name">Name</label>
+        <input type="text" id="name" formControlName="name" name="name">
+    </div>
+    <div class="error" *ngIf="nameFormControl?.invalid && nameFormControl?.touched">
+        <div *ngIf="nameFormControl?.errors?.['required']">NAME IS REQUIRED</div>
+    </div>
+    <div class="error" *ngIf="nameFormControl?.invalid && nameFormControl?.touched">
+        <div *ngIf="nameFormControl?.errors?.['minlength']">Your name must be at least 3 letters</div>
+    </div>
+    <div class="error" *ngIf="nameFormControl?.invalid && nameFormControl?.touched">
+        <div *ngIf="nameFormControl?.errors?.['prohibited']">You can't enter the word tourist</div>
+    </div>
+
+        
+    <br>
+    <div>
+        <label for="email">Email</label>
+        <input type="email" name="" id="email" formControlName="email">
+    </div>
+    <div class="error" *ngIf="emailFormControl?.invalid && emailFormControl?.touched">
+        <div *ngIf="emailFormControl?.errors?.['required']">EMAIL IS REQUIRED</div>
+    </div>
+    <br>
+    <div>
+        <label for="age">Age</label>
+        <input type="number" name="" id="age" formControlName="age">
+    </div>
+    
+    <br>
+    <div>
+        <label for="targetcity">Target City</label>
+        <select id="targetcity" formControlName="city">
+            <option value="{{cities}}" *ngFor="let city of cities">{{city}}</option>
+        </select>
+    </div>
+    <div class="error" *ngIf="cityFormControl?.invalid && cityFormControl?.touched">
+        <div *ngIf="cityFormControl?.errors?.['required']">CITY IS REQUIRED</div>
+    </div>
+    <br>
+    <div>
+        <label for="brief"></label>
+        <textarea name="" id="brief" cols="50" rows="4" formControlName="brief"></textarea>
+    </div>
+    <div class="error" *ngIf="briefFormControl?.invalid && briefFormControl?.touched">
+        <div *ngIf="briefFormControl?.errors?.['required']">BRIEF IS REQUIRED</div>
+    </div>
+    <div class="error" *ngIf="briefFormControl?.invalid && briefFormControl?.touched">
+        <div *ngIf="briefFormControl?.errors?.['minlength']">Your BRIEF must be at least 100 letters</div>
+    </div>
+    <div class="error" *ngIf="briefFormControl?.invalid && briefFormControl?.touched">
+        <div *ngIf="briefFormControl?.errors?.['prohibited']">You can't enter the word nothing</div>
+    </div>
+    <br>
+    <button type="submit" [disabled]="techform.invalid" (click)="onClick()">Submit</button>
+</form>
