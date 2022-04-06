@@ -3,7 +3,7 @@
 </h1>
 
 <div *ngFor="let city of cities">
-    <h4 [class.green]="color">City: {{city.name}} </h4>
+    <h4 [class.green]="city.attractionSites.length < 3">City: {{city.name}} </h4>
     <h3>Attraction Sites: {{city.attractionSites}}</h3>
     
 
